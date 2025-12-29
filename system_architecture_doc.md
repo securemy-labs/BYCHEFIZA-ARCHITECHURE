@@ -38,7 +38,6 @@ The system consists of three primary layers:
 
 **Presentation Layer**
 - Web application (Single Page Application)
-- Mobile applications (iOS/Android)
 - Administrative dashboards
 
 **Application Layer**
@@ -1230,7 +1229,3 @@ Informational:
 - Deployment events
 - Scaling events
 ```
-
-### Dashboards
-
-**Grafana Dashboards:**
