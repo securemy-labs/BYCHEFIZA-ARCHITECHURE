@@ -38,11 +38,13 @@ router.post('/login',
 
 // Refresh token endpoint
 router.post('/refresh',
+  authLimiter,
   authController.refreshToken
 );
 
 // Logout endpoint
 router.post('/logout',
+  authLimiter,
   authController.logout
 );
 
