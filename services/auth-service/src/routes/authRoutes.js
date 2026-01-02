@@ -50,6 +50,7 @@ router.post('/logout',
 
 // Verify token endpoint
 router.post('/verify',
+  authLimiter,
   authController.verifyToken
 );
 
