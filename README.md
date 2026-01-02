@@ -1,5 +1,7 @@
 # BYCHEFIZA-ARCHITECHURE
 
+[![CI placeholder](https://img.shields.io/badge/CI-pending-lightgrey)](#) <!-- Replace with real CI badge -->
+
 A concise, architecture-first README for the BYCHEFIZA project. This document explains the system architecture, major components, how to run the project locally, and where to find important configuration and deployment information.
 
 ## Project overview
@@ -21,12 +23,12 @@ Data flow (high level):
 
 ## Repository layout (follow the architecture)
 
-- /frontend — Frontend application (UI, static assets)
-- /backend — Backend service (API, business logic)
-- /database or /migrations — DB schema, migration scripts
-- /infrastructure or /infra — IaC (Terraform, CloudFormation, Pulumi) and deployment manifests
+- /frontend — Frontend application (UI, static assets). See `/frontend/README.md`.
+- /backend — Backend service (API, business logic). See `/backend/README.md`.
+- /database — DB schema, migration scripts. See `/database/README.md`.
+- /infra — IaC (Terraform, CloudFormation, Pulumi) and deployment manifests. See `/infra/README.md`.
 - /scripts — Helper scripts for setup, local dev, or deployments
-- /docs — Design docs, architecture diagrams, API specs
+- /docs — Design docs, architecture diagrams, API specs. See `/docs/architecture.md`.
 - README.md — This file (architecture-aligned guide)
 
 Note: If some directories above are named differently in this repository, follow the actual names but keep the same architectural grouping.
@@ -35,46 +37,38 @@ Note: If some directories above are named differently in this repository, follow
 
 1. Prerequisites
    - Node.js, npm/yarn (for frontend and some backend projects)
-   - Python/Go/Java runtime if used by the backend
+   - Backend runtime (e.g., Node, Python, Go, Java) as applicable
    - Docker and Docker Compose (recommended for local environment)
-   - Database server (Postgres, MySQL, MongoDB) or use the Dockerized service
+   - Database server (Postgres, MySQL, MongoDB) or run the provided docker-compose profile
 
-2. Run the database (example using Docker Compose):
+2. Example quick start (adjust to toolchain)
+   - Start DB: `docker-compose up -d database`
+   - Start backend:
+     - `cd backend`
+     - `npm install`
+     - `npm run migrate`
+     - `npm start`
+   - Start frontend:
+     - `cd frontend`
+     - `npm install`
+     - `npm start`
 
-   docker-compose up -d database
-
-3. Start the backend (example):
-
-   cd backend
-   # install deps
-   npm install
-   # run migrations
-   npm run migrate
-   # start
-   npm start
-
-4. Start the frontend (example):
-
-   cd frontend
-   npm install
-   npm start
-
-Adjust commands to match the actual project tooling.
+See component READMEs for concrete commands and environment variables.
 
 ## Configuration
 
-- Environment variables: Document required env vars for each component in their respective README or a .env.example file.
-- Secrets: Keep secrets out of the repo. Use a secrets manager or CI/CD secret storage.
+- Environment variables: Document required env vars for each component in their README or `.env.example`.
+- Secrets: Keep secrets out of the repo. Use a secrets manager (Vault, AWS Secrets Manager) or CI/CD encrypted secrets.
 
 ## Tests and CI
 
-- Tests for frontend and backend should live close to the code they test (e.g., /frontend/tests, /backend/tests).
+- Tests should live close to the code they test (e.g., `/frontend/tests`, `/backend/tests`).
 - CI pipelines should run linting, unit tests, and integration tests before merging.
 
 ## Deployment
 
-- Describe the deployment targets (cloud provider, cluster type) and link to IaC manifests under /infra.
-- Include a brief rollback and monitoring strategy (logs, metrics, alerts).
+- Describe the deployment targets (cloud provider, cluster type) and link to IaC manifests under `/infra`.
+- Include rollback and monitoring strategy (logs, metrics, alerts).
 
 ## Contributing
 
@@ -84,15 +78,14 @@ Adjust commands to match the actual project tooling.
 
 ## Where to find things
 
-- Architecture diagrams: /docs/architecture.md or /docs/diagrams
-- API specification: /docs/api.md or /backend/docs
-- Database migrations: /database/migrations
-- CI/CD pipeline: /.github/workflows or /ci
+- Architecture diagrams: `/docs/architecture.md`
+- API specification: `/docs/api.md` or `/backend/docs`
+- Database migrations: `/database/migrations`
+- CI/CD pipeline: `/.github/workflows` or `/ci`
 
 ## Contact
 
-For questions about architecture and repository structure, open an issue or contact the maintainers.
+For questions about architecture and repository structure, open an issue and use the `architecture` template or contact the maintainers.
 
 ---
-
-This README has been restructured to follow the repository's architecture. Update any paths or commands above to match the actual project layout and toolchain present in this repository.
+This README is intentionally architecture-focused — update concrete commands and links to match the project toolchain.
