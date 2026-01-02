@@ -1,0 +1,36 @@
+{
+  "name": "bychefiza-architecture",
+  "version": "1.0.0",
+  "description": "Enterprise-Grade E-Commerce Platform - Microservices Architecture",
+  "private": true,
+  "scripts": {
+    "setup": "bash scripts/setup/setup.sh",
+    "dev": "docker-compose up",
+    "dev:detached": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "logs": "docker-compose logs -f",
+    "clean": "docker-compose down -v",
+    "migrate": "bash scripts/migrate/migrate.sh",
+    "deploy:k8s": "bash scripts/deployment/deploy-k8s.sh",
+    "build:all": "docker-compose build",
+    "test:services": "npm run test --prefix services/api-gateway && npm run test --prefix services/auth-service"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/securemy-labs/BYCHEFIZA-ARCHITECHURE.git"
+  },
+  "keywords": [
+    "microservices",
+    "e-commerce",
+    "architecture",
+    "kubernetes",
+    "docker",
+    "nodejs"
+  ],
+  "author": "SecureMy Labs",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "services/*",
+    "apps/*"
+  ]
+}
