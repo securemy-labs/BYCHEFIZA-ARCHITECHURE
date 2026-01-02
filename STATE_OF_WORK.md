@@ -1,4 +1,4 @@
-# State of Work
+# Statement of Work
 
 ## Overview
 
